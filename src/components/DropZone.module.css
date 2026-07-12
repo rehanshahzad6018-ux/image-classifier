@@ -1,0 +1,58 @@
+.zone {
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 56px 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  background: var(--bg-card);
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+.zone::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,90,0,0.03) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.zone:hover,
+.dragging {
+  border-color: var(--accent) !important;
+  background: #131313;
+}
+
+.zone:hover .icon,
+.dragging .icon {
+  color: var(--accent);
+  transform: scale(1.15);
+}
+
+.icon {
+  display: block;
+  font-size: 44px;
+  color: #2a2a2a;
+  margin-bottom: 16px;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.primary {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.secondary {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+}
+
+.hidden {
+  display: none;
+}

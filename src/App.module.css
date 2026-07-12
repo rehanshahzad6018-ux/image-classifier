@@ -1,0 +1,182 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient glow blobs */
+.glowTop {
+  position: fixed;
+  top: -40%; left: -20%;
+  width: 70%; height: 70%;
+  background: radial-gradient(ellipse, rgba(255,90,0,0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glowBottom {
+  position: fixed;
+  bottom: -30%; right: -10%;
+  width: 50%; height: 50%;
+  background: radial-gradient(ellipse, rgba(0,180,255,0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Header ── */
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 1;
+}
+
+.label {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.label::before,
+.label::after {
+  content: '';
+  height: 1px;
+  width: 28px;
+  background: var(--accent);
+  opacity: 0.4;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 7vw, 76px);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.title span { color: var(--accent); }
+
+.subtitle {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.06em;
+}
+
+/* ── Main card ── */
+.card {
+  width: 100%;
+  max-width: 680px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Preview ── */
+.imgWrap {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+}
+
+.img {
+  width: 100%;
+  max-height: 380px;
+  object-fit: contain;
+  display: block;
+  background: #0d0d0d;
+}
+
+.overlayBtns {
+  position: absolute;
+  top: 12px; right: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.iconBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 3px;
+  border: 1px solid #2a2a2a;
+  background: rgba(10,10,10,0.85);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: border-color 0.15s, color 0.15s;
+  backdrop-filter: blur(8px);
+}
+
+.iconBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── Analyse button ── */
+.analyseBtn {
+  width: 100%;
+  margin-top: 14px;
+  padding: 16px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.analyseBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.45s;
+}
+
+.analyseBtn:hover:not(:disabled)::before { transform: translateX(100%); }
+
+.analyseBtn:hover:not(:disabled) {
+  background: #ff6a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px var(--accent-glow);
+}
+
+.analyseBtn:disabled {
+  background: #1e1e1e;
+  color: #3a3a3a;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ── Error box ── */
+.errorBox {
+  margin-top: 14px;
+  background: #120800;
+  border: 1px solid rgba(255,90,0,0.2);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-size: 12px;
+  color: var(--accent);
+}
